@@ -6,14 +6,11 @@
 	//shrink
 	if (isset($_POST['shrink'])) {
 
-		$link = $_POST['linktobeshrinked'];
+		$link = esc($_POST['linktobeshrinked']);
 		
-		if (empty($link)) 
-		{ 
-			array_push($errors, "Enter an URL to be shrinked."); 
-		}
-		
-		if (empty($errors)) 
+		if (empty($link)) {  array_push($errors, "Enter a link to be Shrinked."); }
+
+		if (count($errors) == 0) 
 		{
 			while(1)
 			{
@@ -37,10 +34,9 @@
 			$query2 = "INSERT INTO urls (longurl, shorturl, expiry) VALUES ('$link', '$shortlink', '$expirydate')";
 			$result2 = mysqli_query($conn, $query2);
 			$Linkid = mysqli_insert_id($conn);
-
+			header('location: display.php?id='.$Linkid);
 		}
 		
-		header('location: display.php?id='.$Linkid);
 	
 	}
 	
@@ -48,12 +44,13 @@
 	if (isset($_POST['deshrink'])) {
 
 
-		$shrinkedlink = $_POST['linktobedeshrinked'];
+		$shrinkedlink = esc($_POST['linktobedeshrinked']);
 		$n = strlen($shrinkedlink) - 5;
 		$shortlink = substr($shrinkedlink, $n);
 		
 		if (strlen($shortlink)!=5)
-		{ array_push($errors, "Enter a valid shrinked link."); 
+		{ 
+			array_push($errors, "Enter a link to be De-Shrinked."); 
 		}
 		else
 		{
@@ -62,7 +59,8 @@
 			$nr = mysqli_num_rows($result3);
 
 			if ($nr == '0') 
-			{ array_push($errors, "Enter a valid shrinked link."); 
+			{ 
+				array_push($errors, "Invalid Shrinked link."); 
 			}
 		}
 		if (empty($errors)) 
@@ -70,6 +68,17 @@
 			$link = mysqli_fetch_assoc($result3);
 		}
 		header('location: '.$link["longurl"]);
+	}
+
+
+	function esc(String $value)
+	{	
+		global $conn;
+
+		$val = trim($value);
+		$val = mysqli_real_escape_string($conn, $value);
+
+		return $val;
 	}
 
 ?>

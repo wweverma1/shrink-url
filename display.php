@@ -63,7 +63,7 @@
 			</div>
 		</div>
 		<?php endif ?>
-		<h2><a href="display.php">Back to display</a></h2>
+		<h2><a href="home.php" style="color: white; font-weight: bold;" >Back to Home</a></h2>
 	</div>
 
 <!--===============================================================================================-->

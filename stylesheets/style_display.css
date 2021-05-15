@@ -429,13 +429,19 @@ textarea.input100 {
   .display-box {
     width: 100%;
   }
-
+  .display-box-title{
+    font-size: 22px;
+  }
 }
 
 @media (max-width: 576px) {
   .display-box {
     padding: 56px 15px 63px 15px;
     width: 100%;
+  }
+
+  .display-box-title{
+    font-size: 14px;
   }
 
   .rs1-wrap-input100,
