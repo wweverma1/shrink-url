@@ -34,7 +34,7 @@
 				<span class="home-form-title">
 					Shrink your URL
 				</span>
-
+				<?php include('server/errors_Shrink.php'); ?>
 				<label class="label-input100">Enter your URL </label>
 				<div class="wrap-input100 validate-input">
 					<input class="input100" type="text" name="linktobeshrinked" placeholder="Eg. https://wwww.">
@@ -48,7 +48,7 @@
 				</div>
 			</form>
 			<form class="home-form validate-form" style="border-style: solid;" method="post" action="home.php">
-				<?php include('server/errors.php'); ?>
+				<?php include('server/errors_Deshrink.php'); ?>
 				<span class="home-form-title">
 					De-Shrink URL
 				</span>

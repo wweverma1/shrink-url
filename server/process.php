@@ -1,16 +1,16 @@
 <?php 
 	include('config.php');
-	$conn = mysqli_connect($host, $username, $password, $database);
-	$errors = array(); 
+	$conn = mysqli_connect($host, $username, $password, $database); 
 
 	//shrink
 	if (isset($_POST['shrink'])) {
+		$errors_Shrink = array();
 
 		$link = esc($_POST['linktobeshrinked']);
 		
-		if (empty($link)) {  array_push($errors, "Enter a link to be Shrinked."); }
+		if (empty($link)) {  array_push($errors_Shrink, "Enter a link to be Shrinked."); }
 
-		if (count($errors) == 0) 
+		if (count($errors_Shrink) == 0) 
 		{
 			while(1)
 			{
@@ -42,7 +42,7 @@
 	
 	//deshrink
 	if (isset($_POST['deshrink'])) {
-
+		$errors_Deshrink = array();
 
 		$shrinkedlink = esc($_POST['linktobedeshrinked']);
 		$n = strlen($shrinkedlink) - 5;
@@ -50,7 +50,7 @@
 		
 		if (strlen($shortlink)!=5)
 		{ 
-			array_push($errors, "Enter a link to be De-Shrinked."); 
+			array_push($errors_Deshrink, "Enter a link to be De-Shrinked."); 
 		}
 		else
 		{
@@ -60,10 +60,10 @@
 
 			if ($nr == '0') 
 			{ 
-				array_push($errors, "Invalid Shrinked link."); 
+				array_push($errors_Deshrink, "Invalid Shrinked link."); 
 			}
 		}
-		if (empty($errors)) 
+		if (empty($errors_Deshrink)) 
 		{
 			$link = mysqli_fetch_assoc($result3);
 		}
