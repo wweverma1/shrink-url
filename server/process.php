@@ -31,7 +31,7 @@
 			}
 			
 			$myDate= date('Y-m-d');
-			$validity = '7';
+			$validity = '31';
 			$expirydate = date('Y-m-d', strtotime($myDate . "+$validity days") );
 
 			$query2 = "INSERT INTO urls (longurl, shorturl, expiry) VALUES ('$link', '$shortlink', '$expirydate')";
