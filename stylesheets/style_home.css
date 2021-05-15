@@ -196,7 +196,7 @@ iframe {
 }
 
 .wrap-home {
-  width: 1120px;
+  width: 100%;
   background: transparent;
   overflow: hidden;
   display: -webkit-box;

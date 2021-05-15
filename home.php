@@ -66,6 +66,7 @@
 				</div>
 			</form>
 		</div>
+		<h2><a href="index.php" style="color: white; font-weight: bold;" >Back</a></h2>
 	</div>
 
 
